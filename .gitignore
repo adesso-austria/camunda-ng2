@@ -40,3 +40,5 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+camunda-sdk-ts-0\.0\.1\.tgz
