@@ -1,5 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { TaskService, ITaskService, ClientFn, connectorConfig } from 'camunda-sdk-ts';
+import { Component, Inject, OnInit } from '@angular/core';
+import { ITaskService } from 'camunda-sdk-ts';
+import { TaskService } from './task.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { TaskService, ITaskService, ClientFn, connectorConfig } from 'camunda-sd
 export class AppComponent implements OnInit {
   title = 'app';
   constructor(
-    @Inject('TaskService') private taskService: ITaskService,
+    @Inject(TaskService) private taskService: ITaskService,
   ) {}
   ngOnInit(): void {
     console.log('Service', this.taskService);

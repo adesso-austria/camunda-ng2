@@ -1,8 +1,14 @@
-import { ClientFn, connectedFn, connectorConfig, TaskService as TaskServiceNs } from 'camunda-sdk-ts';
+import {
+  ClientFn,
+  connectorConfig,
+  createInstance,
+  ITaskService,
+  TaskService as TaskServiceNs,
+} from 'camunda-sdk-ts';
+import { InjectionToken } from '@angular/core';
 
-export function taskServiceFactory(clientFn: ClientFn) {
+export const TaskService = new InjectionToken<ITaskService>('TaskService');
+export function taskServiceFactory(clientFn: ClientFn): ITaskService {
   connectorConfig.clientFn = clientFn;
-  return {
-    getTasksCountPost: connectedFn(TaskServiceNs.getTasksCountPost),
-  };
+  return createInstance(TaskServiceNs);
 }
